@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Puzzle 135 – Page {{ page }}</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    h1 { margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 6px; border: 1px solid #ccc; font-size: 12px; word-break: break-all; }
+    th { background-color: #f7f7f7; }
+    a { margin-right: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Key Range Page {{ page }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Private Key (hex)</th>
+        <th>Compressed Pubkey</th>
+        <th>Bitcoin Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for k in keys %}
+      <tr>
+        <td>{{ k.priv }}</td>
+        <td>{{ k.pub }}</td>
+        <td>{{ k.addr }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div style="margin-top: 20px;">
+    {% if page > 1 %}
+      <a href="page_{{ page - 1 }}.html">⟵ Previous Page</a>
+    {% endif %}
+    {% if page < 4 %}
+      <a href="page_{{ page + 1 }}.html">Next Page ⟶</a>
+    {% endif %}
+  </div>
+</body>
+</html>
